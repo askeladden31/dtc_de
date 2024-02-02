@@ -18,3 +18,31 @@ Question 3: answered in code of transformer block
 Question 4: answer printed in transformer block  
 Question 5: answer printed in transformer block  
 Question 6: answer found using shell command *gsutil ls gs://dtc-de-course-412311-mage/green_taxi_2020_4Q/ | wc -l*
+
+# Module 3 Homework
+Question 1: `bq show --format=json green_taxi_2022.green_tripdata | jq ".numRows"`  
+Question 2:  
+```
+SELECT COUNT(DISTINCT PULocationID) FROM `dtc-de-course-412311.green_taxi_2022.green_tripdata`   
+SELECT COUNT(DISTINCT PULocationID) FROM `dtc-de-course-412311.green_taxi_2022.external_green_tripdata`
+```  
+Question 3:  
+```
+SELECT COUNT(1) FROM `green_taxi_2022.green_tripdata` WHERE fare_amount = 0
+```  
+Question 4:  
+```
+create or replace table `green_taxi_2022.green_tripdata_partitioned`
+partition by date(lpep_pickup_datetime)
+cluster by PUlocationID
+as select * from `green_taxi_2022.green_tripdata`
+```  
+Question 5:  
+```
+SELECT distinct PULocationID FROM `dtc-de-course-412311.green_taxi_2022.green_tripdata_partitioned` 
+WHERE TIMESTAMP_TRUNC(lpep_pickup_datetime, DAY) between TIMESTAMP("2022-06-01") and TIMESTAMP("2022-06-30")
+
+SELECT distinct PULocationID FROM `dtc-de-course-412311.green_taxi_2022.green_tripdata` 
+WHERE TIMESTAMP_TRUNC(lpep_pickup_datetime, DAY) between TIMESTAMP("2022-06-01") and TIMESTAMP("2022-06-30")
+```
+Questions 6, 7 & 8: Theoretical knowledge - no code involved.
