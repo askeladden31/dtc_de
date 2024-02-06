@@ -3,6 +3,7 @@ if 'transformer' not in globals():
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
+existing_values_of_VendorID = set()
 
 @transformer
 def transform(data, *args, **kwargs):
@@ -32,7 +33,14 @@ def transform(data, *args, **kwargs):
 
     data['lpep_pickup_date']=data['lpep_pickup_datetime'].dt.date
 
-    print(f"Existing values of VendorID: {data['VendorID'].unique()}")
+    existing_values_of_VendorID.update(data['VendorID'].unique())
+
+    print(f"Existing values of VendorID: {existing_values_of_VendorID}")
+
+    # if not data_2.empty:
+    #     print('Found currently existing values in vendor_id')
+    #     existing_values_of_vendor_id.update(data_2['vendor_id'])
+    #     print(existing_values_of_vendor_id is not None)
 
     new_columns = data.columns.str.replace(r'([a-z])([A-Z])', r'\1_\2', regex=True).str.replace(r'([A-Z])([A-Z])([a-z])', r'\1_\2\3', regex=True).str.lower()
 
@@ -50,7 +58,11 @@ def test_output(output, *args) -> None:
     """
     Template code for testing the output of the block.
     """
+
     # assert output is not None, 'The output is undefined'
     assert 'vendor_id' in output.columns
+    if existing_values_of_VendorID:
+        print('Asserting against existing values of VendorID')
+        assert (output['vendor_id'].isin(existing_values_of_VendorID)).all()
     assert (output['passenger_count']>0).all()
     assert (output['trip_distance']>0).all()
