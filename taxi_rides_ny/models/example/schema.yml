@@ -3,6 +3,8 @@ version: 2
 
 models:
     - name: my_first_dbt_model
+      # config:
+      #   enabled: false
       description: "A starter dbt model"
       columns:
           - name: id
@@ -12,6 +14,8 @@ models:
                 - not_null
 
     - name: my_second_dbt_model
+      # config:
+      #   enabled: false
       description: "A starter dbt model"
       columns:
           - name: id
