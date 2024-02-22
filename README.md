@@ -54,4 +54,5 @@ Questions 6, 7 & 8: Theoretical knowledge - no code involved.
 [workshop_homework.duckdb](workshop_homework.duckdb)  
 
 # Module 4 Homework
-[taxi_rides_ny/](taxi_rides_ny/)
+dbt Project: [taxi_rides_ny/](taxi_rides_ny/)  
+Report: [https://lookerstudio.google.com/s/tU2OTK_FYao](https://lookerstudio.google.com/s/tU2OTK_FYao)
