@@ -50,6 +50,8 @@ WHERE TIMESTAMP_TRUNC(lpep_pickup_datetime, DAY) between TIMESTAMP("2022-06-01")
 Questions 6, 7 & 8: Theoretical knowledge - no code involved.  
 
 # Workshop Homework (dlt)
-
 [workshop_homework.ipynb](workshop_homework.ipynb)  
 [workshop_homework.duckdb](workshop_homework.duckdb)  
+
+# Module 4 Homework
+[taxi_rides_ny/](taxi_rides_ny/)
