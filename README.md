@@ -20,6 +20,8 @@ Question 5: answer printed in transformer block
 Question 6: answer found using shell command *gsutil ls gs://dtc-de-course-412311-mage/green_taxi_2020_4Q/ | wc -l*
 
 # Module 3 Homework
+Ingestion script: [ingest_data.py](ingest_data.py)  
+
 Question 1: `bq show --format=json green_taxi_2022.green_tripdata | jq ".numRows"`  
 Question 2:  
 ```
@@ -45,4 +47,12 @@ WHERE TIMESTAMP_TRUNC(lpep_pickup_datetime, DAY) between TIMESTAMP("2022-06-01")
 SELECT distinct PULocationID FROM `dtc-de-course-412311.green_taxi_2022.green_tripdata` 
 WHERE TIMESTAMP_TRUNC(lpep_pickup_datetime, DAY) between TIMESTAMP("2022-06-01") and TIMESTAMP("2022-06-30")
 ```
-Questions 6, 7 & 8: Theoretical knowledge - no code involved.
+Questions 6, 7 & 8: Theoretical knowledge - no code involved.  
+
+# Workshop Homework (dlt)
+[workshop_homework.ipynb](workshop_homework.ipynb)  
+[workshop_homework.duckdb](workshop_homework.duckdb)  
+
+# Module 4 Homework
+dbt Project: [taxi_rides_ny/](taxi_rides_ny/)  
+Report: [https://lookerstudio.google.com/s/tU2OTK_FYao](https://lookerstudio.google.com/s/tU2OTK_FYao)
