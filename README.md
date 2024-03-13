@@ -99,3 +99,6 @@ SELECT taxi_zone.Zone as pickup_zone, COUNT(1) as num_pickups
  ORDER BY num_pickups DESC
  LIMIT 3;
 ```  
+
+# Module 6 Homework  
+[week6.ipynb](week6.ipynb)
